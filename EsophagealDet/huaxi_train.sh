@@ -1,0 +1,3 @@
+python3 train.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/yolov9-c-huaxi-double_branch.yaml --weights '' --name yolov9-c --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 300 --name huaxi_det_double_branch &&
+
+python3 train.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/yolov9-c-huaxi-triple_branch.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name huaxi_det_triple_branch
