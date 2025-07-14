@@ -1,0 +1,114 @@
+# YOLOv9
+
+# parameters
+ch: 3
+nc: 4  # number of classes
+nm: 3  # number of modality
+depth_multiple: 1.0  # model depth multiple
+width_multiple: 1.0  # layer channel multiple
+#activation: nn.LeakyReLU(0.1)
+#activation: nn.ReLU()
+
+# anchors
+anchors: 3
+
+# YOLOv9 backbone
+# [from, number, module, args] input: [3, 640, 640]
+prompt:
+  [
+    [-1, 1, Silence, []], # 0
+
+    [-1, 1, Conv, [16, 3, 2]], # 1
+
+    [-1, 1, Conv, [32, 3, 2]], # 2-prompt feature map
+
+    # routing
+    [-1, 1, PromptClassifier, [nm]] # 3
+  ]
+
+
+backbone:
+  [
+   # conv down
+   [0, 1, Conv, [16, 3, 2]],  # 4-P1/2
+
+   # conv down
+   [-1, 1, Conv, [48, 3, 2]],  # 5-P2/4   
+
+   # resize image [0, -1] cannot inverse to [-1, 0], 3: channel number of input 
+   [[0, -1], 1, Resize, []],  # 6
+
+   # cat prompt
+   [[-1, -2, 2], 1, Concat, [1]],  # 7-cat prompt P2
+
+   # elan-1 block
+   [-1, 1, RepNCSPELAN4, [128, 64, 64, 1]],  # 8 
+
+   # avg-conv down
+   [-1, 1, ADown, [128]],  # 9 feat_1
+   [-1, 1, FrontFeat, []],  # 10 feat_1
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 128, 64, 1]],  # 11
+
+   # avg-conv down
+   [-1, 1, ADown, [256]],  # 12 feat_2
+   [-1, 1, FrontFeat, []],  # 13 feat_2
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 14
+
+   # avg-conv down
+   [-1, 1, ADown, [256]],  # 15 feat_3
+   [-1, 1, FrontFeat, []],  # 16 feat_3
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 17 low_feat
+  ]
+
+
+# YOLOv9 head
+head:
+  [
+   # elan-spp block
+   [-1, 1, SPPELAN, [256, 128]],  # 18 feat_3^'
+   [-1, 1, BackFeat, []],  # 19 feat_3^'
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']], # 20
+   [[-1, 14], 1, Concat, [1]],  # 21-cat 
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 22 feat_2^'
+   [-1, 1, BackFeat, []],  # 23 feat_2^'
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']], # 24
+   [[-1, 11], 1, Concat, [1]],  # 25-cat 
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [128, 128, 64, 1]],  # 26 feat_1^' (small)
+   [-1, 1, BackFeat, []],  # 27 feat_1^'
+
+   # avg-conv-down merge
+   [-1, 1, ADown, [128]],
+   [[-1, 22], 1, Concat, [1]],  # 29 cat head P4
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 30 (medium)
+
+   # avg-conv-down merge
+   [-1, 1, ADown, [256]],
+   [[-1, 18], 1, Concat, [1]],  # 32-cat head P5
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 33 (large)
+
+   # detection head
+
+   # detect
+   [[27, 30, 33], 1, DDetect, [nc]],  # 34 DualDDetect(A3, A4, A5, P3, P4, P5)
+
+
+
+  ]
