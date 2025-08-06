@@ -1,1 +1,1 @@
-python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name huaxi_det_double_branch
+python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name EsophagealDet
