@@ -39,7 +39,7 @@ python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach
 ## **Evaluation**
 Evaluate the model performance  using the command in ./EsophagealDet/EsophagealDet/test_huaxi:
 ```bash
-python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name EsophagealDet
+python3 test_dual.py --data data/oesopstomach_fusion.yaml --img 640 --batch 32 --conf 0.001 --iou 0.7 --device 0 --weights 'path_to_weights' --name EsophagealDet --task test
 ```
 
 ## **Detection**
