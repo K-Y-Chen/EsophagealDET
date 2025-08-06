@@ -1,4 +1,4 @@
-# **ECD-Dataset Analysis and Detection Model**
+# **EsophagealDET: Esophageal Cancer Lesion Detection with Information Preservation for Multi-modal Diagnostic Images**
 
 ## **Overview**
 This repository contains the implementation of a detection model based on the ECD-Dataset for esophageal cancer detection.
