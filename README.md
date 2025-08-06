@@ -31,16 +31,19 @@ The ECD-Dataset is available from the corresponding authors (Yuan or Chen) upon 
 The Kvasir-Dataset is publicly available [here](link-to-dataset). Ensure the dataset is split following [here](link-to-dataset).
 
 ## **Training**
-Train the model using the command in ./EsophagealDet/EsophagealDet/train_huaxi:
+Train the model using the command in ./EsophagealDet/EsophagealDet/train_huaxi.sh:
 ```bash
-bash
+python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name huaxi_det_double_branch
+```
 
 ## **Evaluation**
 Evaluate the model performance  using the command in ./EsophagealDet/EsophagealDet/test_huaxi:
 ```bash
-bash
+python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name huaxi_det_double_branch
+```
 
 ## **Detection**
-Perform inference on new images using the command in ./EsophagealDet/EsophagealDet/train_huaxi:
+Perform inference on new images using the command in ./EsophagealDet/EsophagealDet/detect_huaxi:
 ```bash
-bash
+python3 detect_dual.py --data oesopstomach_fusion.yaml --weight 'path_to_your_weights' --name detection
+```
