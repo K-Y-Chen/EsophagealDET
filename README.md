@@ -30,6 +30,39 @@ The ECD-Dataset is available from the corresponding authors (Yuan or Chen) upon 
 ### **Kvasir-Dataset**
 The Kvasir-Dataset is publicly available [here](https://datasets.simula.no/kvasir/). Alternatively, you can download this dataset from [here](https://www.kaggle.com/datasets/meetnagadia/kvasir-dataset). Please ensure the dataset is split following the guidelines provided [here](https://github.com/DengPingFan/PraNet).
 
+### **Accessing the Dataset**
+Please structure your data in the following directory structure:
+```bash
+dataset/
+├── train/
+│   ├── images/
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   └── ...
+│   └── labels/
+│       ├── mask1.txt
+│       ├── mask2.txt
+│       └── ...
+├── val/
+│   ├── images/
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   └── ...
+│   └── labels/
+│       ├── mask1.txt
+│       ├── mask2.txt
+│       └── ...
+├── test/
+│   ├── images/
+│   │   ├── image1.txt
+│   │   ├── image2.txt
+│   │   └── ...
+│   └── labels/
+│       ├── mask1.txt
+│       ├── mask2.txt
+│       └── ...
+```
+
 ## **Training**
 Train the model using the command in ./EsophagealDet/EsophagealDet/train_huaxi.sh:
 ```bash
