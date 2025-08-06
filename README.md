@@ -33,13 +33,13 @@ The Kvasir-Dataset is publicly available [here](link-to-dataset). Ensure the dat
 ## **Training**
 Train the model using the command in ./EsophagealDet/EsophagealDet/train_huaxi.sh:
 ```bash
-python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name huaxi_det_double_branch
+python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name EsophagealDet
 ```
 
 ## **Evaluation**
 Evaluate the model performance  using the command in ./EsophagealDet/EsophagealDet/test_huaxi:
 ```bash
-python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name huaxi_det_double_branch
+python3 train_dual.py --workers 8 --device 0 --batch 96 --data data/oesopstomach_fusion.yaml --img 640 --cfg models/detect/huaxi-det.yaml --weights '' --hyp hyp.scratch-high-huaxi-aug.yaml --min-items 0 --epochs 500 --name EsophagealDet
 ```
 
 ## **Detection**
