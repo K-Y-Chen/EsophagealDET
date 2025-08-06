@@ -16,8 +16,30 @@ Run huaxi_train.sh or train.sh to start your training.
 ### **Software**
 - **Python**: 3.8.10.
 - **Libraries**:
-  please refer to ./EsophagealDet/EsophagealDet/requirements.txt
+  Please refer to ./EsophagealDet/EsophagealDet/requirements.txt
 
 Install dependencies using:
 ```bash
 pip install -r requirements.txt
+
+## **Dataset**
+### **ECD-Dataset**
+The ECD-Dataset is available from the corresponding authors (Yuan or Chen) upon reasonable request.
+
+### **Kvasir-Dataset**
+The Kvasir-Dataset is publicly available [here](link-to-dataset). Ensure the dataset is split following [here](link-to-dataset).
+
+## **Training**
+Train the model using the command in ./EsophagealDet/EsophagealDet/train_huaxi:
+```bash
+bash
+
+## **Evaluation**
+Evaluate the model performance  using the command in ./EsophagealDet/EsophagealDet/test_huaxi:
+```bash
+bash
+
+## **Detection**
+Perform inference on new images using the command in ./EsophagealDet/EsophagealDet/train_huaxi:
+```bash
+bash
