@@ -28,7 +28,7 @@ pip install -r requirements.txt
 The ECD-Dataset is available from the corresponding authors (Yuan or Chen) upon reasonable request.
 
 ### **Kvasir-Dataset**
-The Kvasir-Dataset is publicly available [here](link-to-dataset). Ensure the dataset is split following [here](link-to-dataset).
+The Kvasir-Dataset is publicly available [here](https://datasets.simula.no/kvasir/). Ensure the dataset is split following [here](link-to-dataset).
 
 ## **Training**
 Train the model using the command in ./EsophagealDet/EsophagealDet/train_huaxi.sh:
