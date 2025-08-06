@@ -54,8 +54,8 @@ dataset/
 │       └── ...
 ├── test/
 │   ├── images/
-│   │   ├── image1.txt
-│   │   ├── image2.txt
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
 │   │   └── ...
 │   └── labels/
 │       ├── mask1.txt
