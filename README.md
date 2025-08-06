@@ -3,9 +3,9 @@
 ## **Overview**
 This repository contains the implementation of a detection model based on the ECD-Dataset for esophageal cancer detection.
 
-The source codes of EsophagealDet are placed in ./EsophagealDet
+The source code of the EsophagealDet model is located in `./EsophagealDet`.
 
-The source codes of other models are placed in ./others
+The source code for other models is located in `./others`.
 
 ## **Requirements**
 ### **Hardware**
