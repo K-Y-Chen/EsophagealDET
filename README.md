@@ -21,6 +21,7 @@ Run huaxi_train.sh or train.sh to start your training.
 Install dependencies using:
 ```bash
 pip install -r requirements.txt
+```
 
 ## **Dataset**
 ### **ECD-Dataset**
